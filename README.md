@@ -12,8 +12,6 @@ Create `.env.local` and add:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Example to create row in database
