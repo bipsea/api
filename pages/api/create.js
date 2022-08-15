@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     // connect to db
     const pool = new Pool({ connectionString: process.env.POSTRESQL_CONNECTION });
     const query = `INSERT INTO items(item_id, title, description, image_uri, chain, price, seller, filename, encrypted_file_uri, encrypted_symmetric_key, onchain) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
-    const values = [metadata.itemId, metadata.title, metadata.description, metadata.imageUri, metadata.chain, metadata.price, metadata.seller, metadata.filename, metadata.encryptedFileUri, metadata.encryptedSymmetricKey, metadata.onchain, false];
+    const values = [metadata.itemId, metadata.title, metadata.description, metadata.imageUri, metadata.chain, metadata.price, metadata.seller, metadata.filename, metadata.encryptedFileUri, metadata.encryptedSymmetricKey, false];
     await pool.query(query, values);
     res.status(200).json({ success: true });
   } catch (err) {
