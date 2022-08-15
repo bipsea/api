@@ -9,11 +9,10 @@ export default async function handler(req, res) {
   });
 
   try {
-    const { cid } = req.body;
+    const { cid } = JSON.parse(req.body);
     if (req.method !== "POST") return res.status(405).send({ error: "Only POST allowed" });
     if (!cid) return res.status(400).send({ error: "Missing cid" });
-    console.log(cid)
-    const response = await fetch("https://api.web3.storage/pins", {
+    await fetch("https://api.web3.storage/pins", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
