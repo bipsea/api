@@ -1,12 +1,15 @@
+import NextCors from "nextjs-cors";
 import axios from "axios";
 import { Pool } from "pg";
 import isValidMetadata from "../../src/isValidMetadata";
 
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST");
-  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
+  await NextCors(req, res, {
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   try {
     const { metadataUri } = req.body;
     if (req.method !== "POST") return res.status(405).send({ error: "Only POST allowed" });
