@@ -4,11 +4,11 @@ import { Pool } from "pg";
 import isValidMetadata from "../../src/isValidMetadata";
 
 export default async function handler(req, res) {
-  await NextCors(req, res, {
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-    origin: "*",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  });
+  // await NextCors(req, res, {
+  //   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+  //   origin: "*",
+  //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  // });
 
   try {
     const { metadataUri } = req.body;
