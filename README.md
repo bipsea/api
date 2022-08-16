@@ -1,14 +1,12 @@
-# API
+# Repinner 
 
-POST to save metadata to database
+POST to save repin cid
 
 ## Setup
 
-Make sure database is set up: https://github.com/bipsea/database
-
 Create `.env.local` and add:
 
-`POSTRESQL_CONNECTION=postgresql://dbuser:password@database.com:3211/mydb`
+`WEB3_STORAGE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6`
 
 ```bash
 npm run dev
@@ -17,9 +15,9 @@ npm run dev
 Example to create row in database
 
 ```curl
-curl --location --request POST 'localhost:3000/api/create' \
+curl --location --request POST 'localhost:3000/api/repin' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "metadataUri": "https://ipfs.io/ipfs/bafkreigjdoplg6qattgtkx7zrfreky3xjk52dpxeqxf7bqx7funa2z6vpu"
+    "cid": "bafkreigjdoplg6qattgtkx7zrfreky3xjk52dpxeqxf7bqx7funa2z6vpu"
 }'
 ```
