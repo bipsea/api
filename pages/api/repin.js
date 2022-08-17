@@ -19,8 +19,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({ cid }),
     }).then((res) => res.json());
-    // console.log({ response });
-    res.status(200).json({ success: true });
+    res.status(200).json({ response });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Internal server error" });
