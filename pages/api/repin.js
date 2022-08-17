@@ -8,10 +8,10 @@ export default async function handler(req, res) {
   });
 
   try {
-    const { cid } = JSON.parse(req.body);
+    const { cid } = req.body;
     if (req.method !== "POST") return res.status(405).send({ error: "Only POST allowed" });
     if (!cid) return res.status(400).send({ error: "Missing cid" });
-    await fetch("https://api.web3.storage/pins", {
+    const response = await fetch("https://api.web3.storage/pins", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,6 +19,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({ cid }),
     }).then((res) => res.json());
+    // console.log({ response });
     res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);

@@ -4,6 +4,12 @@ POST to save repin cid
 
 ## Setup
 
+Get web3.storage token + request pinning access
+
+Token: https://web3.storage/tokens/
+
+Repin: https://web3.storage/docs/how-tos/pinning-services-api/
+
 Create `.env.local` and add:
 
 `WEB3_STORAGE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6`
