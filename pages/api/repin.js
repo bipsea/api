@@ -11,11 +11,11 @@ export default async function handler(req, res) {
     const { cid } = req.body;
     if (req.method !== "POST") return res.status(405).send({ error: "Only POST allowed" });
     if (!cid) return res.status(400).send({ error: "Missing cid" });
-    const response = await fetch("https://api.web3.storage/pins", {
+    const response = await fetch("https://api.nft.storage/pins", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.WEB3_STORAGE_TOKEN}`,
+        Authorization: `Bearer ${process.env.NFT_STORAGE_TOKEN}`,
       },
       body: JSON.stringify({ cid }),
     }).then((res) => res.json());
